@@ -1,0 +1,39 @@
+algoritmo calculoIrpf;
+// Síntese
+//  Objetivo:  calcular o valor de imposto de renda para pagar.
+//  Entrada : Rendimento Anual do contribuinte
+//  Saída   : valor do imposto a pagar
+
+
+principal
+	// Declarações
+	real rendimentoAnual;	
+	real imposto;
+
+	// Instruções
+	//inicializa o valor do imposto de renda a pagar
+	imposto = 0;
+	//solicita o rendimento anual do contribuinte usuário
+	escreva("Digite o rendimento anual: ");
+	leia(rendimentoAnual);
+	se (rendimentoAnual <= 22847.76) entao
+		imposto = 0;
+		senao se (rendimentoAnual <= 33919.80) entao
+			imposto = (rendimentoAnual - 22847.76) * 0.075;
+				senao se (rendimentoAnual <= 45012.60) entao
+					imposto = (rendimentoAnual - 33919.80) * 0.15 + (33919.80 - 22847.76) * 0.075;
+						senao se (rendimentoAnual <= 55976.16) entao	
+							imposto = (rendimentoAnual - 45012.60) * 0.225	+ (45012.60 - 33919.80) * 0.15 + (33919.80 - 22847.76) * 0.075;
+								senao 
+									imposto = (rendimentoAnual - 55976.16) * 0.275 + (55976.16 - 45012.60) * 0.225 + (45012.60 - 33919.80) * 0.15 + (33919.80 - 22847.76) * 0.075;									
+															
+						fimSe
+				fimSe
+		fimSe						
+	fimSe 
+	
+	//exibe o valor do imposto de renda a ser pago
+	escreva("O valor do imposto de renda a pagar é de: R$", imposto );
+	
+
+fimPrincipal
